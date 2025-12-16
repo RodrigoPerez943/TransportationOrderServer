@@ -32,10 +32,6 @@ jobs:
 
       run: mvn -B compile --file pom.xml
 
-    - run: ls ${GITHUB_WORKSPACE}/target/*.jar
-
-
-
   verify-and-package:
 
     needs: build
@@ -70,5 +66,20 @@ jobs:
 
           registry: ghcr.io
 
-          username: "name: build and test CI workflow"
+          username: "rodrigoperez943"
 
+          password: ${{ secrets.PAT }}
+
+    -
+
+        name: Build and push
+
+        uses: docker/build-push-action@v3
+
+        with:
+
+          context: .
+
+          push: true
+
+          tags: ghcr.io/rodrigoperez943/tos:latest
