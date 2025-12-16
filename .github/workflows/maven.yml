@@ -32,6 +32,10 @@ jobs:
 
       run: mvn -B compile --file pom.xml
 
+    - run: ls ${GITHUB_WORKSPACE}/target/*.jar
+
+
+
   verify-and-package:
 
     needs: build
